@@ -44,6 +44,13 @@ public class Colour {
         }
     }
 
+    public static boolean compareColours(Colour c1, Colour c2){
+        if (c1.red == c2.red && c1.green == c2.green && c1.blue == c1.blue) {
+            return true;
+        }
+        return false;
+    }
+
     public int getRed(){
         return this.red;
     }
@@ -55,5 +62,4 @@ public class Colour {
     public int getBlue(){
         return this.blue;
     }
-
 }
