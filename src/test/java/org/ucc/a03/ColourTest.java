@@ -20,4 +20,21 @@ class ColourTest {
                 "Float values are not valid!"
         );
     }
+
+    @Test
+    void testIfConstructorValuesAreValidForRGBTypeInt(){
+        var colour = new Colour(6915853);
+
+        assertTrue(colour.getRed() == 105);
+        assertTrue(colour.getGreen() == 135);
+        assertTrue(colour.getBlue() == 13);
+    }
+
+    @Test
+    void exceptionTestingForTheConstructorThatTakesInRGBTypeInt() {
+        assertThrows(IllegalArgumentException.class,
+                () -> new Colour(999999999),
+                "Integer value is not valid!"
+        );
+    }
 }

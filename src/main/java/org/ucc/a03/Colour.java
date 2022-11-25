@@ -26,6 +26,24 @@ public class Colour {
         }
     }
 
+    /**
+     * Constructor
+     *
+     * @param rgb , integer value between 0 and 16777215
+     */
+    public Colour (int rgb){
+        if (rgb <= 16777215) {
+            var hex = Integer.toHexString(rgb);
+            hex = String.format("%06X",  rgb);
+
+            this.red = Integer.parseInt(hex.substring(0, 2), 16);
+            this.green = Integer.parseInt(hex.substring(2, 4), 16);
+            this.blue = Integer.parseInt(hex.substring(4, 6), 16);
+        } else {
+            throw new IllegalArgumentException("Integer value is not valid!");
+        }
+    }
+
     public int getRed(){
         return this.red;
     }
