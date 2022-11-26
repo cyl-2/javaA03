@@ -1,13 +1,10 @@
-package org.ucc.a03;
-
 /**
  * The Colour Class
- *
  * Internal representation of a Colour object consists
  * of three individual integer values R, G, B ranging from 0 - 255
  */
 public class Colour {
-    private int red, green, blue;
+    private final int red, green, blue;
 
     /**
      * Constructor
@@ -45,10 +42,7 @@ public class Colour {
     }
 
     public static boolean compareColours(Colour c1, Colour c2){
-        if (c1.red == c2.red && c1.green == c2.green && c1.blue == c1.blue) {
-            return true;
-        }
-        return false;
+        return c1.red == c2.red && c1.green == c2.green && c1.blue == c2.blue;
     }
 
     public int getRed(){
@@ -62,4 +56,9 @@ public class Colour {
     public int getBlue(){
         return this.blue;
     }
+
+    public String toString() {
+        return "Colour's individual RGB values are R:" + this.red + " , G: " + this.green + " , B:" + this.blue;
+    }
+
 }

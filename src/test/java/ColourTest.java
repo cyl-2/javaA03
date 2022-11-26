@@ -1,16 +1,25 @@
-package org.ucc.a03;
-
 import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class ColourTest {
 
+    private final static Colour colourFloat = new Colour(0.9f,0.6f,0.5f);
+    private final static Colour colourInt = new Colour(6915853);
+
     @Test
     void testIfConstructorValuesAreValidForRGBTypeFloatRed(){
-        var colour = new Colour(0.9f,0.6f,0.5f);
-        assertTrue(colour.getRed() == 230);
-        assertTrue(colour.getGreen() == 153);
-        assertTrue(colour.getBlue() == 128);
+        assertEquals(230, colourFloat.getRed());
+    }
+
+    @Test
+    void testIfConstructorValuesAreValidForRGBTypeFloatGreen(){
+        assertEquals(153, colourFloat.getGreen());
+    }
+
+    @Test
+    void testIfConstructorValuesAreValidForRGBTypeFloatBlue(){
+        assertEquals(128, colourFloat.getBlue());
     }
 
     @Test
@@ -22,12 +31,18 @@ class ColourTest {
     }
 
     @Test
-    void testIfConstructorValuesAreValidForRGBTypeInt(){
-        var colour = new Colour(6915853);
+    void testIfConstructorValuesAreValidForRGBTypeIntRed(){
+        assertEquals(105, colourInt.getRed());
+    }
 
-        assertTrue(colour.getRed() == 105);
-        assertTrue(colour.getGreen() == 135);
-        assertTrue(colour.getBlue() == 13);
+    @Test
+    void testIfConstructorValuesAreValidForRGBTypeIntGreen(){
+        assertEquals(135, colourInt.getGreen());
+    }
+
+    @Test
+    void testIfConstructorValuesAreValidForRGBTypeIntBlue(){
+        assertEquals(13, colourInt.getBlue());
     }
 
     @Test
@@ -40,50 +55,37 @@ class ColourTest {
 
     @Test
     void compareColoursBetweenAColourOfTypeIntAndAColourOfTypeFloatComparisonResultIsFalse() {
-        var c1 = new Colour(6915853);
-        var c2 = new Colour(0.9f,0.6f,0.5f);
-
-        assertFalse(Colour.compareColours(c1, c2));
+        assertFalse(Colour.compareColours(colourFloat, colourInt));
     }
 
     @Test
     void compareColoursBetweenAColourOfTypeIntAndAColourOfTypeFloatComparisonResultIsTrue() {
         var c1 = new Colour(16777215);
         var c2 = new Colour(1.0f,1.0f,1.0f);
-
         assertTrue(Colour.compareColours(c1, c2));
     }
 
-
     @Test
     void compareColoursBetweenTwoColoursOfTypeIntComparisonResultIsTrue() {
-        var c1 = new Colour(16777215);
-        var c2 = new Colour(16777215);
-
-        assertTrue(Colour.compareColours(c1, c2));
+        var colour = new Colour(6915853);
+        assertTrue(Colour.compareColours(colourInt, colour));
     }
 
     @Test
     void compareColoursBetweenTwoColoursOfTypeIntComparisonResultIsFalse() {
-        var c1 = new Colour(16777215);
-        var c2 = new Colour(16715);
-
-        assertFalse(Colour.compareColours(c1, c2));
+        var colour = new Colour(16715);
+        assertFalse(Colour.compareColours(colourInt, colour));
     }
 
     @Test
     void compareColoursBetweenTwoColoursOfTypeFloatComparisonResultIsTrue() {
-        var c1 = new Colour(0.9f,0.6f,0.5f);
-        var c2 = new Colour(0.9f,0.6f,0.5f);
-
-        assertTrue(Colour.compareColours(c1, c2));
+        var colour = new Colour(0.9f,0.6f,0.5f);
+        assertTrue(Colour.compareColours(colourFloat, colour));
     }
 
     @Test
     void compareColoursBetweenTwoColoursOfTypeFloatComparisonResultIsFalse() {
-        var c1 = new Colour(0.9f,0.6f,0.5f);
-        var c2 = new Colour(0.0f,0.1f,0.5f);
-
-        assertFalse(Colour.compareColours(c1, c2));
+        var colour = new Colour(0.0f,0.1f,0.5f);
+        assertFalse(Colour.compareColours(colourFloat, colour));
     }
 }
