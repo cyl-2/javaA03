@@ -8,10 +8,17 @@ class ColourTest {
     private final static Colour colourInt = new Colour(6915853);
 
     @Test
+    void exceptionTestingForTheConstructorThatTakesInParamTypeFloat() {
+        assertThrows(IllegalArgumentException.class,
+                () -> new Colour(20,40,20),
+                "Float values are not valid!"
+        );
+    }
+
+    @Test
     void testIfParamTypeFloatConstructorLogicReturnsValidValueForRed(){
         assertEquals(230, colourFloat.getRed());
     }
-
 
     @Test
     void testIfParamTypeFloatConstructorLogicReturnsValidValueForGreen(){
@@ -21,14 +28,6 @@ class ColourTest {
     @Test
     void testIfParamTypeFloatConstructorLogicReturnsValidValueForBlue(){
         assertEquals(128, colourFloat.getBlue());
-    }
-
-    @Test
-    void exceptionTestingForTheConstructorThatTakesInParamTypeFloat() {
-        assertThrows(IllegalArgumentException.class,
-                () -> new Colour(20,40,20),
-                "Float values are not valid!"
-        );
     }
 
     @Test
@@ -55,38 +54,38 @@ class ColourTest {
     }
 
     @Test
-    void compareColoursBetweenAColourOfTypeIntAndAColourOfTypeFloatComparisonResultShouldBeFalse() {
-        assertFalse(Colour.compareColours(colourFloat, colourInt));
+    void compareIfColoursAreEqualBetweenAColourOfTypeIntAndAColourOfTypeFloatComparisonResultShouldBeFalse() {
+        assertFalse(Colour.equalColours(colourFloat, colourInt));
     }
 
     @Test
-    void compareColoursBetweenAColourOfTypeIntAndAColourOfTypeFloatComparisonResultShouldBeTrue() {
+    void compareIfColoursAreEqualBetweenAColourOfTypeIntAndAColourOfTypeFloatComparisonResultShouldBeTrue() {
         var c1 = new Colour(16777215);
         var c2 = new Colour(1.0f,1.0f,1.0f);
-        assertTrue(Colour.compareColours(c1, c2));
+        assertTrue(Colour.equalColours(c1, c2));
     }
 
     @Test
-    void compareColoursBetweenTwoColoursOfTypeIntComparisonResultShouldBeTrue() {
+    void compareIfColoursAreEqualBetweenTwoColoursOfTypeIntComparisonResultShouldBeTrue() {
         var colour = new Colour(6915853);
-        assertTrue(Colour.compareColours(colourInt, colour));
+        assertTrue(Colour.equalColours(colourInt, colour));
     }
 
     @Test
-    void compareColoursBetweenTwoColoursOfTypeIntComparisonResultShouldBeFalse() {
+    void compareIfColoursAreEqualBetweenTwoColoursOfTypeIntComparisonResultShouldBeFalse() {
         var colour = new Colour(16715);
-        assertFalse(Colour.compareColours(colourInt, colour));
+        assertFalse(Colour.equalColours(colourInt, colour));
     }
 
     @Test
-    void compareColoursBetweenTwoColoursOfTypeFloatComparisonResultShouldBeTrue() {
+    void compareIfColoursAreEqualBetweenTwoColoursOfTypeFloatComparisonResultShouldBeTrue() {
         var colour = new Colour(0.9f,0.6f,0.5f);
-        assertTrue(Colour.compareColours(colourFloat, colour));
+        assertTrue(Colour.equalColours(colourFloat, colour));
     }
 
     @Test
-    void compareColoursBetweenTwoColoursOfTypeFloatComparisonResultShouldBeFalse() {
+    void compareIfColoursAreEqualBetweenTwoColoursOfTypeFloatComparisonResultShouldBeFalse() {
         var colour = new Colour(0.0f,0.1f,0.5f);
-        assertFalse(Colour.compareColours(colourFloat, colour));
+        assertFalse(Colour.equalColours(colourFloat, colour));
     }
 }
