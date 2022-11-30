@@ -41,22 +41,46 @@ public class Colour {
         }
     }
 
-    public static boolean compareColours(Colour c1, Colour c2){
+    /**
+     * This method compares two colours to see if they are equal to each other
+     *
+     * @param c1 , first colour
+     * @param c2 , second colour
+     * @return  true if both colours are the same, false if colours are different
+     */
+    public static boolean equalColours(Colour c1, Colour c2){
         return c1.red == c2.red && c1.green == c2.green && c1.blue == c2.blue;
     }
 
+    /**
+     *
+     * @return red component of colour
+     */
     public int getRed(){
         return this.red;
     }
 
+    /**
+     *
+     * @return green component of colour
+     */
     public int getGreen(){
         return this.green;
     }
 
+    /**
+     *
+     * @return blue component of colour
+     */
     public int getBlue(){
         return this.blue;
     }
 
+    /**
+     * Method to print out Colour object as a string
+     *
+     * @return  Colour object as a string
+     */
     public String toString() {
         return "Colour's individual RGB values are R:" + this.red + " , G: " + this.green + " , B:" + this.blue;
     }
